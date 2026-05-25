@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Turnis — Gestione turni e calendari</title>
+<meta name="description" content="Turnis organizza i calendari e i turni dei tuoi dipendenti. Semplice, efficace, professionale.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,900;1,900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --peach: #f8ece4;
+    --navy: #202c54;
+    --cream: #f2e7dd;
+    --pink: #fb63be;
+    --sky: #7ec1ff;
+    --orange: #f9512c;
+    --dark: #191919;
+    --white: #ffffff;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--peach);
+    color: var(--dark);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.25rem 2.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(248,236,228,0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(25,25,25,0.08);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 1.5rem;
+    color: var(--navy);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+
+  .nav-cta {
+    background: var(--navy);
+    color: var(--cream);
+    padding: 0.6rem 1.4rem;
+    border-radius: 100px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 700;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .nav-cta:hover { background: #2d3f78; transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 4rem;
+    padding: 8rem 5vw 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(32,44,84,0.06) 0%, transparent 70%);
+    right: -100px; top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+
+  .hero-label {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--navy);
+    background: rgba(32,44,84,0.08);
+    padding: 0.4rem 0.9rem;
+    border-radius: 100px;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.1s forwards;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: clamp(3.5rem, 7vw, 6rem);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    color: var(--dark);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.25s forwards;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--navy);
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    line-height: 1.65;
+    color: rgba(25,25,25,0.65);
+    max-width: 420px;
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.4s forwards;
+  }
+
+  .hero-actions {
+    display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.55s forwards;
+  }
+
+  .btn-primary {
+    background: var(--navy);
+    color: var(--cream);
+    padding: 0.9rem 2rem;
+    border-radius: 100px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(32,44,84,0.2);
+  }
+  .btn-primary:hover { background: #2d3f78; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(32,44,84,0.3); }
+
+  .btn-secondary {
+    color: var(--navy);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+    display: flex; align-items: center; gap: 0.4rem;
+    transition: gap 0.2s;
+  }
+  .btn-secondary:hover { gap: 0.7rem; }
+  .btn-secondary::after { content: '→'; }
+
+  .hero-visual {
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    opacity: 0;
+    animation: fadeIn 1s 0.6s forwards;
+  }
+
+  .hero-circle {
+    width: min(420px, 90%);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--navy) 0%, #2d3f78 50%, #3a5199 100%);
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-circle::before {
+    content: '';
+    position: absolute;
+    width: 70%; height: 70%;
+    border-radius: 50%;
+    border: 1px solid rgba(242,231,221,0.15);
+  }
+
+  .hero-circle::after {
+    content: '';
+    position: absolute;
+    width: 50%; height: 50%;
+    border-radius: 50%;
+    border: 1px solid rgba(242,231,221,0.08);
+  }
+
+  .hero-circle-text {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-style: italic;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    color: var(--cream);
+    text-align: center;
+    z-index: 1;
+    line-height: 1.1;
+  }
+
+  .hero-badge {
+    position: absolute;
+    bottom: -16px; right: -16px;
+    background: var(--pink);
+    color: white;
+    font-weight: 700;
+    font-size: 0.8rem;
+    padding: 0.7rem 1.2rem;
+    border-radius: 100px;
+    white-space: nowrap;
+    box-shadow: 0 4px 16px rgba(251,99,190,0.4);
+    animation: pulse 2.5s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.04); }
+  }
+
+  /* WHY SECTION */
+  .section-why {
+    padding: 6rem 5vw;
+    background: var(--white);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .section-eyebrow {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--navy);
+    opacity: 0.5;
+    margin-bottom: 0.8rem;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--dark);
+  }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .card {
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.25s, box-shadow 0.25s;
+    cursor: default;
+  }
+  .card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(0,0,0,0.12); }
+
+  .card-pink { background: var(--pink); }
+  .card-sky  { background: var(--sky); }
+  .card-orange { background: var(--orange); }
+
+  .card-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    font-weight: 900;
+    line-height: 1;
+    opacity: 0.15;
+    position: absolute;
+    top: 1rem; right: 1.5rem;
+    color: var(--white);
+  }
+
+  .card-icon {
+    font-size: 2rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .card-title {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--white);
+    margin-bottom: 0.6rem;
+    line-height: 1.3;
+  }
+
+  .card-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.85);
+  }
+
+  /* CTA SECTION */
+  .section-cta {
+    background: var(--navy);
+    padding: 7rem 5vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .cta-headline {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-style: italic;
+    font-size: clamp(3rem, 6vw, 5rem);
+    line-height: 0.95;
+    color: var(--cream);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+  }
+
+  .cta-sub {
+    font-size: 1.1rem;
+    color: rgba(242,231,221,0.6);
+    margin-top: 1.5rem;
+    line-height: 1.6;
+  }
+
+  .cta-form {
+    display: flex; flex-direction: column; gap: 1rem;
+  }
+
+  .cta-form-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 1.8rem;
+    color: var(--cream);
+    margin-bottom: 0.5rem;
+  }
+
+  .form-row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;
+  }
+
+  .form-input {
+    background: rgba(242,231,221,0.08);
+    border: 1px solid rgba(242,231,221,0.15);
+    border-radius: 10px;
+    padding: 0.85rem 1.1rem;
+    color: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+    width: 100%;
+  }
+  .form-input::placeholder { color: rgba(242,231,221,0.35); }
+  .form-input:focus { border-color: rgba(242,231,221,0.4); background: rgba(242,231,221,0.12); }
+
+  .form-input.full { grid-column: 1 / -1; }
+
+  textarea.form-input { resize: none; min-height: 100px; }
+
+  .form-submit {
+    background: var(--cream);
+    color: var(--navy);
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 100px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    align-self: flex-start;
+    margin-top: 0.25rem;
+  }
+  .form-submit:hover { background: white; transform: translateY(-2px); }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy);
+    border-top: 1px solid rgba(242,231,221,0.1);
+    padding: 2.5rem 5vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 1.3rem;
+    color: var(--cream);
+    text-decoration: none;
+  }
+
+  .footer-contacts {
+    display: flex; gap: 2rem; flex-wrap: wrap;
+  }
+
+  .footer-contacts a, .footer-contacts span {
+    color: rgba(242,231,221,0.5);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+  }
+  .footer-contacts a:hover { color: var(--cream); }
+
+  .footer-copy {
+    color: rgba(242,231,221,0.3);
+    font-size: 0.85rem;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  /* SCROLL REVEAL */
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.7s, transform 0.7s;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; padding-top: 7rem; text-align: center; gap: 3rem; }
+    .hero-subtitle { margin: 0 auto 2.5rem; }
+    .hero-actions { justify-content: center; }
+    .hero-visual { order: -1; }
+    .hero-circle { width: min(280px, 70vw); }
+    .cards-grid { grid-template-columns: 1fr; }
+    .section-cta { grid-template-columns: 1fr; gap: 3rem; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { flex-direction: column; text-align: center; }
+    .footer-contacts { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Turnis</a>
+  <a href="#contatti" class="nav-cta">Inizia ora</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-label">Gestione turni & calendari</div>
+    <h1 class="hero-title">Ciao,<br>sono<br><em>Turnis</em></h1>
+    <p class="hero-subtitle">Amo organizzare i calendari e i turni dei tuoi dipendenti. Semplice, veloce, senza stress.</p>
+    <div class="hero-actions">
+      <a href="#contatti" class="btn-primary">Contattaci subito</a>
+      <a href="#perche" class="btn-secondary">Scopri come</a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-circle">
+      <div class="hero-circle-text">Calenda<br>è facile!</div>
+    </div>
+    <div class="hero-badge">✦ Inizia oggi</div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="section-why" id="perche">
+  <div class="section-header reveal">
+    <div class="section-eyebrow">Perché sceglierci</div>
+    <h2 class="section-title">Perché lavorare insieme?</h2>
+  </div>
+
+  <div class="cards-grid">
+    <div class="card card-pink reveal">
+      <div class="card-number">01</div>
+      <div class="card-icon">🤝</div>
+      <div class="card-title">Migliora la collaborazione</div>
+      <p class="card-text">Per migliorare la collaborazione con i propri dipendenti, rendendo la gestione dei turni chiara e condivisa.</p>
+    </div>
+    <div class="card card-sky reveal" style="transition-delay:0.1s">
+      <div class="card-number">02</div>
+      <div class="card-icon">⚡</div>
+      <div class="card-title">Risolve le complessità</div>
+      <p class="card-text">Per risolvere le situazioni più complesse: sovrapposizioni, sostituzioni, turni speciali. Tutto sotto controllo.</p>
+    </div>
+    <div class="card card-orange reveal" style="transition-delay:0.2s">
+      <div class="card-number">03</div>
+      <div class="card-icon">🏆</div>
+      <div class="card-title">Garantisce il successo</div>
+      <p class="card-text">Per garantire il successo della propria azienda, con una pianificazione efficiente che riduce errori e conflitti.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA / CONTATTI -->
+<section class="section-cta" id="contatti">
+  <div class="reveal">
+    <h2 class="cta-headline">Hai un dubbio?</h2>
+    <p class="cta-sub">Siamo qui per aiutarti. Scrivici e iniziamo a lavorare insieme.</p>
+    <div style="margin-top:2.5rem; display:flex; flex-direction:column; gap:0.5rem;">
+      <span style="color:rgba(242,231,221,0.5); font-size:0.9rem;">📞 Tel: 05 1234567</span>
+      <span style="color:rgba(242,231,221,0.5); font-size:0.9rem;">✉️ E-mail: ciao@turnis.it</span>
+      <span style="color:rgba(242,231,221,0.5); font-size:0.9rem;">📍 Via Ovunque 123, Qualsiasi Città</span>
+    </div>
+  </div>
+
+  <div class="cta-form reveal" style="transition-delay:0.15s">
+    <div class="cta-form-title">Contattaci.</div>
+    <div class="form-row">
+      <input class="form-input" type="text" placeholder="Nome">
+      <input class="form-input" type="text" placeholder="Cognome">
+    </div>
+    <input class="form-input full" type="email" placeholder="Email">
+    <input class="form-input full" type="text" placeholder="Azienda">
+    <textarea class="form-input full" placeholder="Come possiamo aiutarti?"></textarea>
+    <button class="form-submit" type="submit">Invia messaggio →</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="footer-logo">Turnis</a>
+  <div class="footer-contacts">
+    <a href="mailto:ciao@turnis.it">ciao@turnis.it</a>
+    <a href="https://mio.turnis.it">App dipendenti</a>
+    <a href="https://gestione.turnis.it">App gestione</a>
+  </div>
+  <span class="footer-copy">© 2026 Turnis</span>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
