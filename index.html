@@ -3,8 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Turnis — Pianifica i turni. Semplifica il lavoro.</title>
-<meta name="description" content="Turnis è la piattaforma per la gestione di turni, presenze e dipendenti. Tutto quello che ti serve, senza complessità inutili.">
+<title>Turnis — Software per la gestione turni e presenze del personale</title>
+<meta name="description" content="Turnis è la piattaforma italiana per la pianificazione turni, timbratura e gestione dipendenti. Prova gratis, senza carta di credito.">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Turnis">
+<link rel="canonical" href="https://turnis.it/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Turnis">
+<meta property="og:url" content="https://turnis.it/">
+<meta property="og:title" content="Turnis — Pianifica i turni. Semplifica il lavoro.">
+<meta property="og:description" content="La piattaforma per gestire turni, presenze e dipendenti. Configurazione in 5 minuti, app dipendente inclusa, gratis per iniziare.">
+<meta property="og:image" content="https://turnis.it/og-image.png">
+<meta property="og:locale" content="it_IT">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Turnis — Pianifica i turni. Semplifica il lavoro.">
+<meta name="twitter:description" content="La piattaforma per gestire turni, presenze e dipendenti. Configurazione in 5 minuti, app dipendente inclusa, gratis per iniziare.">
+<meta name="twitter:image" content="https://turnis.it/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="css/style.css">
 <style>
 
@@ -306,6 +322,58 @@
   .stats-grid { grid-template-columns: 1fr 1fr; }
 }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://turnis.it/#organization",
+      "name": "Turnis",
+      "url": "https://turnis.it",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://turnis.it/og-image.png"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "ciao@turnis.it",
+        "contactType": "customer support",
+        "availableLanguage": "Italian"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://turnis.it/#website",
+      "url": "https://turnis.it",
+      "name": "Turnis",
+      "publisher": { "@id": "https://turnis.it/#organization" },
+      "inLanguage": "it-IT",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://turnis.it/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Turnis",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "url": "https://turnis.it",
+      "description": "Piattaforma per la gestione di turni, presenze e dipendenti.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR",
+        "description": "Piano gratuito disponibile"
+      },
+      "publisher": { "@id": "https://turnis.it/#organization" }
+    }
+  ]
+}
+</script>
+<link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
 </head>
 <body>
 
