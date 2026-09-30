@@ -2,69 +2,28 @@
 // TURNIS — main.js
 // ============================================================
 
+// ---- CONFIGURAZIONE ----
+// URL a cui inviare l'email raccolta (POST JSON: { email, source }).
+// Esempi: endpoint Formspree/Web3Forms/Brevo oppure API di Turnis.
+// L'email automatica di conferma va configurata lato servizio.
+// Se vuoto, il form ripiega su un mailto verso CONTACT_EMAIL.
+const SIGNUP_ENDPOINT = '';
+const CONTACT_EMAIL = 'ciao@turnis.it';
+// URL della privacy policy (se vuoto il link resta inattivo).
+const PRIVACY_URL = '';
+
 document.addEventListener('DOMContentLoaded', () => {
 
   // ---- Scroll reveal ----
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-  // ---- Nav scroll class ----
-  const nav = document.querySelector('.nav');
-  if (nav) {
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 20);
-    });
-  }
-
-  // ---- Mobile menu ----
-  const hamburger = document.querySelector('.nav-hamburger');
-  const mobileMenu = document.querySelector('.mobile-menu');
-  if (hamburger && mobileMenu) {
-    hamburger.addEventListener('click', () => {
-      const open = mobileMenu.classList.toggle('open');
-      hamburger.setAttribute('aria-expanded', open);
-      document.body.style.overflow = open ? 'hidden' : '';
-    });
-    mobileMenu.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
-        mobileMenu.classList.remove('open');
-        document.body.style.overflow = '';
-      });
-    });
-  }
-
-  // ---- Active nav link ----
-  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-  document.querySelectorAll('.nav-links a').forEach(a => {
-    const href = a.getAttribute('href');
-    if (href === currentPage || (currentPage === '' && href === 'index.html')) {
-      a.classList.add('active');
-    }
-  });
-
-  // ---- Counter animation ----
-  const counters = document.querySelectorAll('[data-count]');
-  const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (!e.isIntersecting) return;
-      const el = e.target;
-      const target = parseInt(el.dataset.count);
-      const suffix = el.dataset.suffix || '';
-      const duration = 1800;
-      const start = performance.now();
-      const update = (now) => {
-        const progress = Math.min((now - start) / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
-        el.textContent = Math.round(eased * target) + suffix;
-        if (progress < 1) requestAnimationFrame(update);
-      };
-      requestAnimationFrame(update);
-      counterObserver.unobserve(el);
-    });
-  }, { threshold: 0.5 });
-  counters.forEach(c => counterObserver.observe(c));
 
   // ---- Accordion ----
   document.querySelectorAll('.accordion-item').forEach(item => {
@@ -84,13 +43,63 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ---- Tab switcher ----
-  document.querySelectorAll('.tab-trigger').forEach(trigger => {
-    trigger.addEventListener('click', () => {
-      const group = trigger.closest('.tab-group');
-      const target = trigger.dataset.tab;
-      group.querySelectorAll('.tab-trigger').forEach(t => t.classList.toggle('active', t === trigger));
-      group.querySelectorAll('.tab-panel').forEach(p => p.classList.toggle('active', p.dataset.panel === target));
+  // ---- Privacy links ----
+  document.querySelectorAll('[data-privacy]').forEach(a => {
+    if (PRIVACY_URL) {
+      a.href = PRIVACY_URL;
+      a.target = '_blank';
+      a.rel = 'noopener';
+    } else {
+      a.addEventListener('click', e => e.preventDefault());
+    }
+  });
+
+  // ---- Signup form ----
+  const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+  document.querySelectorAll('[data-signup]').forEach(form => {
+    const msg = form.querySelector('.signup-msg');
+    const btn = form.querySelector('.signup-btn');
+    const source = form.closest('header') ? 'hero' : 'footer';
+
+    const showError = (text) => { msg.textContent = text; msg.classList.add('error'); };
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      msg.classList.remove('error');
+
+      // Honeypot: i bot compilano il campo nascosto.
+      if (form.elements.website.value) return;
+
+      const email = form.elements.email.value.trim();
+      if (!EMAIL_RE.test(email)) return showError('Inserisci un indirizzo email valido.');
+      if (!form.elements.consent.checked) return showError('Per continuare serve il tuo consenso al trattamento dell\'email.');
+
+      // Nessun endpoint configurato: fallback su mailto.
+      if (!SIGNUP_ENDPOINT) {
+        const subject = encodeURIComponent('Richiesta informazioni Turnis');
+        const body = encodeURIComponent('Ciao, vorrei iniziare con Turnis. La mia email: ' + email);
+        window.location.href = 'mailto:' + CONTACT_EMAIL + '?subject=' + subject + '&body=' + body;
+        return;
+      }
+
+      const label = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = 'Invio in corso…';
+      try {
+        const res = await fetch(SIGNUP_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ email, source })
+        });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        document.querySelectorAll('[data-signup]').forEach(f => f.classList.add('is-done'));
+      } catch (err) {
+        showError('Qualcosa è andato storto. Riprova o scrivici a ' + CONTACT_EMAIL + '.');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = label;
+      }
     });
   });
 

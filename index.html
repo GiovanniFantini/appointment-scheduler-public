@@ -3,21 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Turnis — Software per la gestione turni e presenze del personale</title>
-<meta name="description" content="Turnis è la piattaforma italiana per la pianificazione turni, timbratura e gestione dipendenti. Prova gratis, senza carta di credito.">
+<title>Turnis — Gestione turni gratis per piccole attività (fino a 10 dipendenti)</title>
+<meta name="description" content="Smetti di gestire i turni con WhatsApp e fogli Excel. Turnis è gratis per sempre fino a 10 dipendenti: calendario turni, richieste ferie e app per il team. Nessuna carta di credito.">
 <meta name="robots" content="index, follow">
 <meta name="author" content="Turnis">
 <link rel="canonical" href="https://turnis.it/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Turnis">
 <meta property="og:url" content="https://turnis.it/">
-<meta property="og:title" content="Turnis — Pianifica i turni. Semplifica il lavoro.">
-<meta property="og:description" content="La piattaforma per gestire turni, presenze e dipendenti. Configurazione in 5 minuti, app dipendente inclusa, gratis per iniziare.">
+<meta property="og:title" content="Turnis — Basta WhatsApp e Excel per i turni. Gratis fino a 10 dipendenti.">
+<meta property="og:description" content="Pianifica i turni, gestisci ferie e permessi e dai al tuo team un'app per consultare tutto. Gratis per sempre fino a 10 dipendenti.">
 <meta property="og:image" content="https://turnis.it/og-image.png">
 <meta property="og:locale" content="it_IT">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Turnis — Pianifica i turni. Semplifica il lavoro.">
-<meta name="twitter:description" content="La piattaforma per gestire turni, presenze e dipendenti. Configurazione in 5 minuti, app dipendente inclusa, gratis per iniziare.">
+<meta name="twitter:title" content="Turnis — Basta WhatsApp e Excel per i turni. Gratis fino a 10 dipendenti.">
+<meta name="twitter:description" content="Pianifica i turni, gestisci ferie e permessi e dai al tuo team un'app per consultare tutto. Gratis per sempre fino a 10 dipendenti.">
 <meta name="twitter:image" content="https://turnis.it/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,7 +27,7 @@
 /* HERO */
 .hero {
   min-height: 100vh;
-  padding: 8rem 5vw 5rem;
+  padding: 5rem 5vw 5rem;
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
   gap: 5rem;
@@ -44,110 +44,68 @@
     radial-gradient(ellipse 40% 40% at 20% 80%, rgba(251,99,190,0.06) 0%, transparent 60%);
   pointer-events: none;
 }
-
+.hero-brand {
+  font-family: 'Playfair Display', serif; font-weight: 900; font-size: 1.6rem;
+  color: var(--navy); letter-spacing: -0.03em; margin-bottom: 3rem;
+  opacity: 0; animation: fadeUp 0.8s 0.05s forwards;
+}
 .hero-label {
   display: inline-flex; align-items: center; gap: 0.5rem;
   margin-bottom: 1.8rem;
   opacity: 0; animation: fadeUp 0.8s 0.1s forwards;
 }
 .hero-label-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--sage); }
-
-.hero-title {
-  margin-bottom: 1.6rem;
-  opacity: 0; animation: fadeUp 0.8s 0.22s forwards;
-}
-
-.hero-subtitle {
-  max-width: 460px;
-  margin-bottom: 2.8rem;
-  opacity: 0; animation: fadeUp 0.8s 0.38s forwards;
-}
-
-.hero-actions {
-  display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
-  opacity: 0; animation: fadeUp 0.8s 0.52s forwards;
-}
-
+.hero-title { margin-bottom: 1.6rem; opacity: 0; animation: fadeUp 0.8s 0.22s forwards; }
+.hero-subtitle { max-width: 480px; margin-bottom: 2.4rem; opacity: 0; animation: fadeUp 0.8s 0.38s forwards; }
+.hero-form { opacity: 0; animation: fadeUp 0.8s 0.52s forwards; }
 .hero-trust {
-  margin-top: 3rem;
+  margin-top: 2.2rem;
   display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;
   opacity: 0; animation: fadeUp 0.8s 0.68s forwards;
 }
 .hero-trust-line { width: 1px; height: 28px; background: rgba(25,25,25,0.15); }
 .hero-trust-text { font-size: 0.82rem; color: var(--muted); font-weight: 500; }
 
-.hero-visual {
-  position: relative;
-  opacity: 0; animation: fadeIn 1.2s 0.6s forwards;
-}
-
+.hero-visual { position: relative; opacity: 0; animation: fadeIn 1.2s 0.6s forwards; }
 .hero-card {
   background: var(--navy);
   border-radius: var(--radius-xl);
   padding: 2.5rem;
-  position: relative;
-  overflow: hidden;
+  position: relative; overflow: hidden;
   aspect-ratio: 1 / 1.05;
   display: flex; flex-direction: column; justify-content: space-between;
 }
 .hero-card::before {
-  content: '';
-  position: absolute; inset: 0;
+  content: ''; position: absolute; inset: 0;
   background: radial-gradient(circle at 80% 20%, rgba(126,193,255,0.12) 0%, transparent 60%),
               radial-gradient(circle at 20% 80%, rgba(251,99,190,0.08) 0%, transparent 50%);
 }
-
 .hero-card-header { position: relative; z-index: 1; }
 .hero-card-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: rgba(242,231,221,0.45);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  margin-bottom: 0.5rem;
+  font-family: 'Playfair Display', serif; font-size: 0.85rem; font-weight: 700;
+  color: rgba(242,231,221,0.45); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.5rem;
 }
-.hero-card-day {
-  font-family: 'Playfair Display', serif;
-  font-weight: 900;
-  font-size: 3.5rem;
-  color: var(--cream);
-  line-height: 1;
-}
-
+.hero-card-day { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 3.5rem; color: var(--cream); line-height: 1; }
 .hero-card-shifts { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 0.7rem; }
 .hero-shift {
   display: flex; align-items: center; gap: 0.75rem;
-  padding: 0.75rem 1rem;
-  border-radius: var(--radius-md);
-  background: rgba(242,231,221,0.07);
-  border: 1px solid rgba(242,231,221,0.1);
+  padding: 0.75rem 1rem; border-radius: var(--radius-md);
+  background: rgba(242,231,221,0.07); border: 1px solid rgba(242,231,221,0.1);
 }
 .hero-shift-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
 .hero-shift-info { flex: 1; }
 .hero-shift-name { font-size: 0.88rem; font-weight: 700; color: var(--cream); }
 .hero-shift-time { font-size: 0.75rem; color: rgba(242,231,221,0.45); margin-top: 1px; }
-.hero-shift-badge {
-  font-size: 0.72rem; font-weight: 700; padding: 0.2rem 0.6rem;
-  border-radius: 100px; background: rgba(74,124,111,0.3); color: #7ecfbe;
-}
-
-.hero-card-footer {
-  position: relative; z-index: 1;
-  display: flex; align-items: center; justify-content: space-between;
-}
+.hero-shift-badge { font-size: 0.72rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 100px; background: rgba(74,124,111,0.3); color: #7ecfbe; }
+.hero-card-footer { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; }
 .hero-card-stat { text-align: center; }
 .hero-card-stat-n { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 1.8rem; color: var(--cream); }
 .hero-card-stat-l { font-size: 0.72rem; color: rgba(242,231,221,0.4); margin-top: 2px; }
 
 .hero-floating {
-  position: absolute;
-  background: var(--white);
-  border-radius: var(--radius-md);
-  padding: 0.8rem 1.1rem;
-  box-shadow: var(--shadow-lg);
-  display: flex; align-items: center; gap: 0.6rem;
-  white-space: nowrap;
+  position: absolute; background: var(--white); border-radius: var(--radius-md);
+  padding: 0.8rem 1.1rem; box-shadow: var(--shadow-lg);
+  display: flex; align-items: center; gap: 0.6rem; white-space: nowrap;
   font-size: 0.82rem; font-weight: 600; color: var(--dark);
 }
 .hero-floating-icon { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; }
@@ -159,169 +117,173 @@
 @keyframes fadeUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:none} }
 @keyframes fadeIn { from{opacity:0} to{opacity:1} }
 
-/* LOGOS STRIP */
-.logos-strip {
-  background: var(--white);
-  padding: 2.5rem 5vw;
-  border-top: 1px solid rgba(25,25,25,0.06);
-  border-bottom: 1px solid rgba(25,25,25,0.06);
+/* SIGNUP FORM (used twice) */
+.signup { max-width: 520px; }
+.signup-row { display: flex; gap: 0.6rem; }
+.signup-input {
+  flex: 1; min-width: 0; padding: 1rem 1.4rem;
+  background: var(--white); border: 1.5px solid rgba(25,25,25,0.12);
+  border-radius: 100px; font-family: 'DM Sans', sans-serif; font-size: 1rem; color: var(--dark);
+  outline: none; transition: border-color 0.2s, box-shadow 0.2s;
 }
-.logos-strip-label { font-size: 0.78rem; font-weight: 700; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; margin-right: 3rem; white-space: nowrap; }
-.logos-strip-inner { display: flex; align-items: center; gap: 4rem; flex-wrap: wrap; }
-.logos-strip-placeholder {
-  display: flex; align-items: center; gap: 0.5rem;
-  font-family: 'Playfair Display', serif; font-weight: 900; font-size: 1rem;
-  color: rgba(25,25,25,0.2); letter-spacing: -0.02em;
+.signup-input:focus { border-color: var(--navy); box-shadow: 0 0 0 3px rgba(32,44,84,0.1); }
+.signup-input::placeholder { color: rgba(25,25,25,0.35); }
+.signup-btn { white-space: nowrap; justify-content: center; }
+.signup-consent { display: flex; align-items: flex-start; gap: 0.6rem; margin-top: 0.9rem; font-size: 0.78rem; line-height: 1.5; color: var(--muted); }
+.signup-consent input { margin-top: 3px; accent-color: var(--navy); flex-shrink: 0; }
+.signup-consent a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.signup-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.signup-msg { display: none; margin-top: 0.9rem; font-size: 0.9rem; font-weight: 700; line-height: 1.5; }
+.signup-msg.error { display: block; color: #c0340d; }
+.signup-done {
+  display: none; align-items: flex-start; gap: 0.9rem;
+  padding: 1.2rem 1.4rem; border-radius: var(--radius-md);
+  background: rgba(74,124,111,0.12); color: var(--dark); font-size: 0.95rem; line-height: 1.55;
 }
+.signup-done strong { display: block; font-size: 1.05rem; margin-bottom: 0.2rem; }
+.signup-done-icon { width: 30px; height: 30px; border-radius: 50%; background: var(--sage); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 900; flex-shrink: 0; }
+.signup.is-done .signup-row, .signup.is-done .signup-consent, .signup.is-done .signup-msg { display: none; }
+.signup.is-done .signup-done { display: flex; }
 
-/* FEATURES OVERVIEW */
-.features-intro { text-align: center; max-width: 600px; margin: 0 auto 5rem; }
-.features-intro .eyebrow { margin-bottom: 1rem; }
-.features-intro .display-md { margin-bottom: 1.2rem; }
+/* SECTION HEADERS */
+.sec-head { text-align: center; max-width: 620px; margin: 0 auto 4.5rem; }
+.sec-head .eyebrow { margin-bottom: 1rem; display: block; }
+.sec-head .display-md { margin-bottom: 1.2rem; }
 
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-}
+/* PAIN */
+.pain { background: var(--white); }
+.pain-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.pain-card { background: var(--peach); border-radius: var(--radius-lg); padding: 2.2rem; }
+.pain-quote { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 700; font-size: 1.25rem; line-height: 1.3; color: var(--navy); margin-bottom: 1rem; }
+.pain-card p { font-size: 0.92rem; line-height: 1.65; color: var(--muted); }
+.pain-fix { margin-top: 1rem; font-size: 0.88rem; font-weight: 700; color: var(--sage); }
+.pain-fix::before { content: '→ '; }
 
+/* FEATURES */
+.features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
 .feature-card {
-  background: var(--white);
-  border-radius: var(--radius-lg);
-  padding: 2.2rem;
+  background: var(--white); border-radius: var(--radius-lg); padding: 2.4rem;
   border: 1px solid rgba(25,25,25,0.06);
   transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
-  position: relative; overflow: hidden;
-}
-.feature-card::before {
-  content: '';
-  position: absolute; inset: 0;
-  opacity: 0; transition: opacity 0.3s;
-  background: radial-gradient(circle at 0% 0%, rgba(32,44,84,0.04) 0%, transparent 70%);
 }
 .feature-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: rgba(32,44,84,0.12); }
-.feature-card:hover::before { opacity: 1; }
-
-.feature-icon {
-  width: 48px; height: 48px; border-radius: var(--radius-sm);
-  display: flex; align-items: center; justify-content: center;
-  margin-bottom: 1.4rem;
-  font-size: 1.3rem;
-}
+.feature-icon { width: 48px; height: 48px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; margin-bottom: 1.4rem; font-size: 1.3rem; }
 .feature-icon-navy  { background: rgba(32,44,84,0.08); }
 .feature-icon-pink  { background: rgba(251,99,190,0.1); }
 .feature-icon-sky   { background: rgba(126,193,255,0.15); }
 .feature-icon-sage  { background: rgba(74,124,111,0.1); }
 .feature-icon-orange{ background: rgba(249,81,44,0.1); }
-.feature-icon-cream { background: var(--cream); }
+.feature-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.6rem; }
+.feature-card p  { font-size: 0.95rem; line-height: 1.65; color: var(--muted); }
+.feature-pro { display: inline-block; margin-left: 0.5rem; vertical-align: middle; }
+.features-note { text-align: center; margin-top: 2rem; font-size: 0.88rem; color: var(--muted); }
 
-.feature-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.6rem; }
-.feature-card p  { font-size: 0.92rem; line-height: 1.65; color: var(--muted); }
-.feature-card-link { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.88rem; font-weight: 700; color: var(--navy); text-decoration: none; margin-top: 1.2rem; transition: gap 0.2s; }
-.feature-card-link:hover { gap: 0.6rem; }
-.feature-card-link::after { content: '→'; }
-
-/* HOW IT WORKS */
+/* HOW */
 .how { background: var(--navy); color: var(--cream); }
-.how-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
-.how-header { position: sticky; top: 8rem; }
-.how-header .eyebrow { color: rgba(242,231,221,0.4); }
-.how-header .display-md { color: var(--cream); margin: 1rem 0 1.5rem; }
-.how-header p { color: rgba(242,231,221,0.6); line-height: 1.7; }
+.how .eyebrow { color: rgba(242,231,221,0.4); opacity: 1; }
+.how .display-md { color: var(--cream); }
+.how .lead { color: rgba(242,231,221,0.6); }
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+.step { border-top: 1px solid rgba(242,231,221,0.15); padding-top: 1.8rem; }
+.step-num { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 3rem; color: rgba(242,231,221,0.15); line-height: 1; margin-bottom: 1rem; }
+.step h3 { font-size: 1.15rem; font-weight: 700; color: var(--cream); margin-bottom: 0.5rem; }
+.step p  { font-size: 0.93rem; line-height: 1.65; color: rgba(242,231,221,0.6); }
 
-.steps { display: flex; flex-direction: column; gap: 0; }
-.step {
-  display: flex; gap: 2rem;
-  padding: 2.5rem 0;
-  border-bottom: 1px solid rgba(242,231,221,0.08);
-  position: relative;
+/* PRICING */
+.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; align-items: start; }
+.pricing-card { border-radius: var(--radius-xl); padding: 2.5rem; background: var(--white); border: 1.5px solid rgba(25,25,25,0.08); }
+.pricing-card-featured { background: var(--navy); border-color: var(--navy); transform: scale(1.03); }
+.pricing-badge { display: inline-block; padding: 0.3rem 0.8rem; border-radius: 100px; font-size: 0.72rem; font-weight: 700; margin-bottom: 1.5rem; background: rgba(32,44,84,0.08); color: var(--navy); }
+.pricing-badge-featured { background: var(--pink); color: #fff; }
+.pricing-name { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 1.6rem; margin-bottom: 0.5rem; }
+.pricing-card-featured .pricing-name { color: var(--cream); }
+.pricing-desc { font-size: 0.9rem; color: var(--muted); margin-bottom: 1.6rem; line-height: 1.55; }
+.pricing-card-featured .pricing-desc { color: rgba(242,231,221,0.55); }
+.pricing-amount { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 3.2rem; line-height: 1; display: flex; align-items: flex-start; gap: 0.2rem; }
+.pricing-card-featured .pricing-amount { color: var(--cream); }
+.pricing-currency { font-size: 1.5rem; margin-top: 0.4rem; }
+.pricing-unit { font-size: 1.2rem; margin-top: 1.2rem; }
+.pricing-period { font-size: 0.85rem; color: var(--muted); margin: 0.5rem 0 1.6rem; }
+.pricing-card-featured .pricing-period { color: rgba(242,231,221,0.45); }
+.pricing-divider { height: 1px; background: rgba(25,25,25,0.08); margin: 1.6rem 0; }
+.pricing-card-featured .pricing-divider { background: rgba(242,231,221,0.12); }
+.pricing-features { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; }
+.pricing-features li { display: flex; align-items: flex-start; gap: 0.65rem; font-size: 0.9rem; line-height: 1.5; color: rgba(25,25,25,0.75); }
+.pricing-card-featured .pricing-features li { color: rgba(242,231,221,0.75); }
+.pricing-features li::before { content: '✓'; color: var(--sage); font-weight: 900; flex-shrink: 0; }
+.pricing-card-featured .pricing-features li::before { color: #7ecfbe; }
+.pricing-foot { text-align: center; margin-top: 2.5rem; font-size: 0.88rem; color: var(--muted); }
+
+/* FAQ */
+.faq { background: var(--white); }
+.accordion { max-width: 720px; margin: 0 auto; }
+.accordion-item { border-bottom: 1px solid rgba(25,25,25,0.1); }
+.accordion-trigger {
+  width: 100%; text-align: left; background: none; border: none; cursor: pointer;
+  padding: 1.4rem 0; display: flex; justify-content: space-between; align-items: center;
+  gap: 1rem; font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 700; color: var(--dark);
 }
-.step:last-child { border-bottom: none; }
-.step-num {
-  font-family: 'Playfair Display', serif;
-  font-weight: 900;
-  font-size: 3rem;
-  color: rgba(242,231,221,0.1);
-  line-height: 1;
-  flex-shrink: 0;
-  width: 3rem;
-  text-align: right;
-  padding-top: 0.15rem;
+.accordion-arrow { font-size: 1.2rem; transition: transform 0.3s; color: var(--navy); flex-shrink: 0; }
+.accordion-item.open .accordion-arrow { transform: rotate(45deg); }
+.accordion-body { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(.22,1,.36,1); }
+.accordion-body-inner { padding-bottom: 1.4rem; font-size: 0.95rem; line-height: 1.7; color: var(--muted); }
+
+/* FINAL CTA */
+.final { padding: 6rem 5vw; }
+.final-card {
+  max-width: 1100px; margin: 0 auto;
+  background: var(--navy); border-radius: var(--radius-xl);
+  padding: 5rem 4rem; text-align: center; position: relative; overflow: hidden;
 }
-.step-content {}
-.step-content h3 { font-size: 1.15rem; font-weight: 700; color: var(--cream); margin-bottom: 0.5rem; }
-.step-content p  { font-size: 0.92rem; line-height: 1.65; color: rgba(242,231,221,0.55); }
-.step-tag { margin-top: 0.8rem; display: inline-block; background: rgba(242,231,221,0.08); color: rgba(242,231,221,0.5); padding: 0.25rem 0.75rem; border-radius: 100px; font-size: 0.75rem; font-weight: 700; }
-
-/* ROLES SPLIT */
-.roles { background: var(--white); }
-.roles-header { text-align: center; margin-bottom: 4rem; }
-.roles-header .eyebrow { margin-bottom: 0.8rem; }
-.roles-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-.role-card {
-  border-radius: var(--radius-xl);
-  padding: 3rem;
-  position: relative; overflow: hidden;
-}
-.role-card-merchant { background: var(--peach); }
-.role-card-employee { background: var(--navy); color: var(--cream); }
-
-.role-tag { margin-bottom: 1.5rem; }
-.role-title { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 1.8rem; margin-bottom: 0.8rem; line-height: 1.1; }
-.role-desc { font-size: 0.95rem; line-height: 1.7; opacity: 0.65; margin-bottom: 2rem; }
-.role-features { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; margin-bottom: 2.5rem; }
-.role-features li { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.9rem; line-height: 1.5; }
-.role-features li::before { content: '—'; opacity: 0.35; flex-shrink: 0; }
-.role-card-employee .role-features li { color: rgba(242,231,221,0.75); }
-
-/* STATS */
-.stats { background: var(--peach); }
-.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(25,25,25,0.08); border-radius: var(--radius-lg); overflow: hidden; }
-.stat-cell { background: var(--white); padding: 3rem 2rem; text-align: center; }
-.stat-number { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 3.5rem; color: var(--navy); line-height: 1; }
-.stat-label { font-size: 0.88rem; color: var(--muted); margin-top: 0.5rem; line-height: 1.4; }
-
-/* CTA BANNER */
-.cta-banner {
-  background: var(--navy);
-  border-radius: var(--radius-xl);
-  padding: 5rem 4rem;
-  display: grid; grid-template-columns: 1fr auto;
-  gap: 3rem; align-items: center;
-  position: relative; overflow: hidden;
-  margin: 0 5vw;
-}
-.cta-banner::before {
-  content: '';
-  position: absolute; inset: 0;
+.final-card::before {
+  content: ''; position: absolute; inset: 0;
   background: radial-gradient(circle at 100% 50%, rgba(126,193,255,0.1) 0%, transparent 60%),
               radial-gradient(circle at 0% 100%, rgba(251,99,190,0.06) 0%, transparent 50%);
 }
-.cta-banner-text { position: relative; z-index: 1; }
-.cta-banner-text .display-md { color: var(--cream); margin: 0.8rem 0 1rem; }
-.cta-banner-text p { color: rgba(242,231,221,0.55); font-size: 1rem; line-height: 1.65; max-width: 480px; }
-.cta-banner-actions { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 0.75rem; align-items: flex-end; white-space: nowrap; }
+.final-card > * { position: relative; z-index: 1; }
+.final-card .eyebrow { color: rgba(242,231,221,0.4); opacity: 1; }
+.final-card .display-md { color: var(--cream); margin: 1rem 0 1.2rem; }
+.final-card .lead { color: rgba(242,231,221,0.6); max-width: 480px; margin: 0 auto 2.4rem; }
+.final-card .signup { margin: 0 auto; text-align: left; }
+.final-card .signup-consent { color: rgba(242,231,221,0.5); }
+.final-card .signup-msg.error { color: #ff9c85; }
+.final-card .signup-btn { background: var(--cream); color: var(--navy); box-shadow: none; }
+.final-card .signup-btn:hover { background: #fff; }
+
+/* MINI FOOTER */
+.foot { background: var(--navy); color: var(--cream); padding: 0 5vw 2.5rem; }
+.foot-inner {
+  max-width: 1100px; margin: 0 auto; padding-top: 2rem; border-top: 1px solid rgba(242,231,221,0.1);
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+}
+.foot-brand { font-family: 'Playfair Display', serif; font-weight: 900; font-size: 1.3rem; color: var(--cream); }
+.foot-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+.foot a { color: rgba(242,231,221,0.55); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+.foot a:hover { color: var(--cream); }
+.foot-copy { color: rgba(242,231,221,0.3); font-size: 0.82rem; width: 100%; }
 
 /* RESPONSIVE */
 @media (max-width: 960px) {
-  .hero { grid-template-columns: 1fr; padding-top: 7rem; gap: 3.5rem; text-align: center; }
+  .hero { grid-template-columns: 1fr; padding-top: 3rem; gap: 3.5rem; text-align: center; min-height: auto; }
   .hero-subtitle { margin-left: auto; margin-right: auto; }
-  .hero-actions { justify-content: center; }
+  .hero .signup { margin: 0 auto; text-align: left; }
   .hero-trust { justify-content: center; }
-  .hero-visual { order: -1; max-width: 380px; margin: 0 auto; }
-  .features-grid { grid-template-columns: 1fr 1fr; }
-  .how-grid { grid-template-columns: 1fr; }
-  .how-header { position: static; }
-  .roles-grid { grid-template-columns: 1fr; }
-  .stats-grid { grid-template-columns: 1fr 1fr; }
-  .cta-banner { grid-template-columns: 1fr; padding: 3rem 2.5rem; }
-  .cta-banner-actions { align-items: flex-start; }
-}
-@media (max-width: 640px) {
+  .hero-visual { max-width: 380px; margin: 0 auto; }
+  .pain-grid, .steps, .pricing-grid { grid-template-columns: 1fr; }
+  .pricing-card-featured { transform: none; }
   .features-grid { grid-template-columns: 1fr; }
-  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .final-card { padding: 3.5rem 1.8rem; }
+}
+@media (max-width: 560px) {
+  .signup-row { flex-direction: column; }
+  .signup-btn { width: 100%; }
+  .float-2 { left: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-floating { animation: none; }
 }
 </style>
+<noscript><style>.reveal, .hero-brand, .hero-label, .hero-title, .hero-subtitle, .hero-form, .hero-trust, .hero-visual { opacity: 1 !important; transform: none !important; animation: none !important; }</style></noscript>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -331,10 +293,7 @@
       "@id": "https://turnis.it/#organization",
       "name": "Turnis",
       "url": "https://turnis.it",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://turnis.it/og-image.png"
-      },
+      "logo": { "@type": "ImageObject", "url": "https://turnis.it/og-image.png" },
       "contactPoint": {
         "@type": "ContactPoint",
         "email": "ciao@turnis.it",
@@ -348,12 +307,7 @@
       "url": "https://turnis.it",
       "name": "Turnis",
       "publisher": { "@id": "https://turnis.it/#organization" },
-      "inLanguage": "it-IT",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://turnis.it/?q={search_term_string}",
-        "query-input": "required name=search_term_string"
-      }
+      "inLanguage": "it-IT"
     },
     {
       "@type": "SoftwareApplication",
@@ -361,14 +315,55 @@
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Web",
       "url": "https://turnis.it",
-      "description": "Piattaforma per la gestione di turni, presenze e dipendenti.",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "EUR",
-        "description": "Piano gratuito disponibile"
-      },
+      "description": "Software per la gestione di turni, presenze e richieste del personale. Gratis fino a 10 dipendenti.",
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Starter",
+          "price": "0",
+          "priceCurrency": "EUR",
+          "description": "Gratis per sempre fino a 10 dipendenti e 1 filiale."
+        },
+        {
+          "@type": "Offer",
+          "name": "Pro",
+          "price": "4",
+          "priceCurrency": "EUR",
+          "description": "Per dipendente al mese, IVA esclusa. Filiali illimitate, geofencing, documenti HR.",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "4",
+            "priceCurrency": "EUR",
+            "unitText": "per dipendente al mese"
+          }
+        }
+      ],
       "publisher": { "@id": "https://turnis.it/#organization" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Turnis è davvero gratis?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Sì. Il piano Starter è gratuito per sempre fino a 10 dipendenti e 1 filiale, senza scadenza e senza carta di credito. Se cresci, puoi passare al piano Pro (€4 per dipendente al mese, IVA esclusa) quando vuoi, senza penali." }
+        },
+        {
+          "@type": "Question",
+          "name": "I miei dipendenti devono installare qualcosa?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. L'app dipendente funziona da browser su qualsiasi smartphone o computer. Non serve installare nulla e non ha costi aggiuntivi." }
+        },
+        {
+          "@type": "Question",
+          "name": "Devo essere esperto di software per usarlo?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. La configurazione è guidata passo per passo e il calendario turni si compila con un wizard in tre passi." }
+        },
+        {
+          "@type": "Question",
+          "name": "Cosa succede dopo aver lasciato la mia email?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Riceverai una email di conferma e il nostro team ti ricontatterà per aiutarti a iniziare. Nessun impegno e nessun invio di spam." }
+        }
+      ]
     }
   ]
 }
@@ -377,58 +372,52 @@
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="nav" role="navigation" aria-label="Navigazione principale">
-  <a href="index.html" class="nav-logo">Turnis</a>
-  <ul class="nav-links">
-    <li><a href="funzionalita.html">Funzionalita</a></li>
-    <li><a href="prezzi.html">Prezzi</a></li>
-  </ul>
-  <div class="nav-actions nav-desktop-cta">
-    <a href="https://gestione.turnis.it" class="btn btn-secondary btn-sm" target="_blank">Accedi</a>
-    <a href="inizia.html" class="btn btn-primary btn-sm">Inizia gratis</a>
-  </div>
-  <button class="nav-hamburger" aria-label="Menu" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-
-<div class="mobile-menu">
-  <a href="funzionalita.html">Funzionalita</a>
-  <a href="prezzi.html">Prezzi</a>
-  <a href="https://gestione.turnis.it" target="_blank">Accedi</a>
-  <a href="inizia.html" class="btn btn-primary btn-md">Inizia gratis</a>
-</div>
-
 <!-- HERO -->
-<section class="hero">
+<header class="hero">
   <div class="hero-content">
+    <div class="hero-brand">Turnis</div>
     <div class="hero-label">
       <span class="hero-label-dot"></span>
-      <span class="eyebrow">Piattaforma HR per il lavoro su turni</span>
+      <span class="eyebrow">Gratis fino a 10 dipendenti</span>
     </div>
     <h1 class="hero-title display-xl">
-      Pianifica i turni.<br>
-      <em class="serif">Semplifica</em><br>
-      il lavoro.
+      Basta<br>
+      <em class="serif">WhatsApp</em><br>
+      e fogli Excel.
     </h1>
     <p class="hero-subtitle lead">
-      Turnis riunisce tutto quello che serve per gestire il personale su turni: calendari, presenze, richieste e documenti, in una piattaforma progettata per chi non ha tempo da perdere.
+      Pianifica i turni del tuo team in pochi minuti, gestisci ferie e permessi senza rincorrere nessuno e dai a ogni collaboratore un'app dove vedere tutto. Gratis, per sempre, se hai fino a 10 dipendenti.
     </p>
-    <div class="hero-actions">
-      <a href="inizia.html" class="btn btn-primary btn-lg">Inizia gratis</a>
-      <a href="funzionalita.html" class="btn btn-secondary btn-lg">Scopri le funzionalita</a>
+
+    <div class="hero-form">
+      <form class="signup" data-signup novalidate>
+        <div class="signup-row">
+          <input class="signup-input" type="email" name="email" placeholder="La tua email" autocomplete="email" aria-label="Il tuo indirizzo email" required>
+          <button type="submit" class="btn btn-primary btn-md signup-btn">Voglio iniziare gratis</button>
+        </div>
+        <label class="signup-consent">
+          <input type="checkbox" name="consent" required>
+          <span>Acconsento al trattamento della mia email per ricevere informazioni su Turnis. <a href="#" data-privacy>Privacy Policy</a></span>
+        </label>
+        <input class="signup-hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <p class="signup-msg" role="alert"></p>
+        <div class="signup-done" role="status">
+          <span class="signup-done-icon">&#10003;</span>
+          <div><strong>Perfetto, controlla la tua casella.</strong>Ti abbiamo scritto una email di conferma. Se non la trovi, guarda anche nello spam: ti ricontatteremo a breve.</div>
+        </div>
+      </form>
     </div>
+
     <div class="hero-trust">
-      <span class="hero-trust-text">Nessuna carta di credito richiesta</span>
+      <span class="hero-trust-text">Nessuna carta di credito</span>
       <span class="hero-trust-line"></span>
-      <span class="hero-trust-text">Configurazione in pochi minuti</span>
+      <span class="hero-trust-text">Nessun impegno</span>
       <span class="hero-trust-line"></span>
-      <span class="hero-trust-text">Supporto incluso</span>
+      <span class="hero-trust-text">Il tuo team non installa nulla</span>
     </div>
   </div>
 
-  <div class="hero-visual">
+  <div class="hero-visual" aria-hidden="true">
     <div class="hero-card">
       <div class="hero-card-header">
         <div class="hero-card-title">Calendario turni — Oggi</div>
@@ -439,7 +428,7 @@
           <div class="hero-shift-dot" style="background:#7ec1ff"></div>
           <div class="hero-shift-info">
             <div class="hero-shift-name">Turno mattina — Cassa</div>
-            <div class="hero-shift-time">07:00 – 14:00 &nbsp;·&nbsp; 4 dipendenti</div>
+            <div class="hero-shift-time">07:00 – 14:00 &nbsp;·&nbsp; 2 dipendenti</div>
           </div>
           <span class="hero-shift-badge">Completo</span>
         </div>
@@ -451,22 +440,14 @@
           </div>
           <span class="hero-shift-badge">Completo</span>
         </div>
-        <div class="hero-shift">
-          <div class="hero-shift-dot" style="background:#f9512c"></div>
-          <div class="hero-shift-info">
-            <div class="hero-shift-name">Turno notte — Sicurezza</div>
-            <div class="hero-shift-time">22:00 – 06:00 &nbsp;·&nbsp; 2 dipendenti</div>
-          </div>
-          <span class="hero-shift-badge">Completo</span>
-        </div>
       </div>
       <div class="hero-card-footer">
         <div class="hero-card-stat">
-          <div class="hero-card-stat-n">9</div>
-          <div class="hero-card-stat-l">Dipendenti<br>in servizio</div>
+          <div class="hero-card-stat-n">5</div>
+          <div class="hero-card-stat-l">In servizio<br>oggi</div>
         </div>
         <div class="hero-card-stat">
-          <div class="hero-card-stat-n">3</div>
+          <div class="hero-card-stat-n">2</div>
           <div class="hero-card-stat-l">Turni<br>pianificati</div>
         </div>
         <div class="hero-card-stat">
@@ -475,7 +456,6 @@
         </div>
       </div>
     </div>
-
     <div class="hero-floating float-1">
       <div class="hero-floating-icon" style="background:rgba(74,124,111,0.12)">&#10003;</div>
       Timbratura confermata
@@ -485,237 +465,229 @@
       Richiesta ferie approvata
     </div>
   </div>
+</header>
+
+<main>
+
+<!-- PAIN -->
+<section class="section pain">
+  <div class="container">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Ti riconosci?</span>
+      <h2 class="display-md">Gestire i turni non dovrebbe essere un secondo lavoro</h2>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card reveal reveal-delay-1">
+        <div class="pain-quote">&ldquo;Chi lavora sabato? Ho scritto nel gruppo ma nessuno risponde.&rdquo;</div>
+        <p>Turni sparsi tra chat, foglietti e file che nessuno trova al momento giusto.</p>
+        <div class="pain-fix">Un calendario unico, sempre aggiornato per tutti</div>
+      </div>
+      <div class="pain-card reveal reveal-delay-2">
+        <div class="pain-quote">&ldquo;Posso avere venerdì libero?&rdquo; &mdash; alle 23 di sera.</div>
+        <p>Richieste di ferie e cambi turno che arrivano a ogni ora, per messaggio, e si perdono.</p>
+        <div class="pain-fix">Richieste ordinate: approvi o rifiuti con un clic</div>
+      </div>
+      <div class="pain-card reveal reveal-delay-3">
+        <div class="pain-quote">&ldquo;Ma quel giorno non c'era già qualcun altro?&rdquo;</div>
+        <p>Doppie assegnazioni e sovrapposizioni che scopri solo quando è troppo tardi.</p>
+        <div class="pain-fix">Il sistema ti avvisa dei conflitti prima di pubblicare</div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- LOGOS STRIP -->
-<div class="logos-strip">
-  <div class="logos-strip-inner">
-    <span class="logos-strip-label">Usato da team in</span>
-    <div class="logos-strip-placeholder">Hospitality</div>
-    <div class="logos-strip-placeholder">Retail</div>
-    <div class="logos-strip-placeholder">Logistica</div>
-    <div class="logos-strip-placeholder">Sanitario</div>
-    <div class="logos-strip-placeholder">Ristorazione</div>
-    <div class="logos-strip-placeholder">Manifattura</div>
-  </div>
-</div>
-
-<!-- FEATURES OVERVIEW -->
-<section class="section" style="background:var(--white)">
+<!-- FEATURES -->
+<section class="section">
   <div class="container">
-    <div class="features-intro reveal">
-      <div class="eyebrow">La piattaforma</div>
-      <h2 class="display-md">Tutto quello che serve, senza il superfluo</h2>
-      <p class="lead" style="margin-top:1rem">Ogni funzionalita di Turnis nasce da un problema reale dei responsabili del personale. Nessuna complessita inutile, ogni strumento ha uno scopo preciso.</p>
+    <div class="sec-head reveal">
+      <span class="eyebrow">Cosa ottieni</span>
+      <h2 class="display-md">Tutto quello che serve a una piccola squadra, senza il superfluo</h2>
+      <p class="lead">Ogni strumento nasce da un problema reale di chi gestisce un team. Niente complessità inutile.</p>
     </div>
     <div class="features-grid">
       <div class="feature-card reveal reveal-delay-1">
         <div class="feature-icon feature-icon-sky">&#128197;</div>
-        <h3>Pianificazione turni</h3>
-        <p>Crea e pubblica i turni con un wizard a tre passi. Copia settimane intere, gestisci sostituzioni e rileva subito i conflitti di orario.</p>
-        <a href="funzionalita.html" class="feature-card-link">Scopri di piu</a>
+        <h3>Turni in pochi clic</h3>
+        <p>Crei e pubblichi i turni con un wizard in tre passi. Copi la settimana precedente, controlli chi copre cosa e i tuoi collaboratori ricevono subito la notifica.</p>
       </div>
       <div class="feature-card reveal reveal-delay-2">
-        <div class="feature-icon feature-icon-sage">&#9201;</div>
-        <h3>Timbratura e presenze</h3>
-        <p>I dipendenti timbrano da app con verifica geofencing. Il sistema rileva automaticamente le anomalie e guida alla giustificazione.</p>
-        <a href="funzionalita.html" class="feature-card-link">Scopri di piu</a>
-      </div>
-      <div class="feature-card reveal reveal-delay-3">
         <div class="feature-icon feature-icon-pink">&#128196;</div>
-        <h3>Richieste e approvazioni</h3>
-        <p>Ferie, permessi, cambi turno: il dipendente invia, il responsabile approva o rifiuta. Il calendario si aggiorna in automatico.</p>
-        <a href="funzionalita.html" class="feature-card-link">Scopri di piu</a>
+        <h3>Ferie, permessi e cambi turno</h3>
+        <p>Il collaboratore invia la richiesta dall'app, tu approvi o rifiuti. Il calendario si aggiorna da solo e resta traccia di tutto, senza scorrere chat.</p>
       </div>
       <div class="feature-card reveal reveal-delay-1">
-        <div class="feature-icon feature-icon-navy">&#127970;</div>
-        <h3>Multi-filiale</h3>
-        <p>Gestisci piu sedi e reparti da un unico pannello. Ogni filiale ha il proprio calendario, i propri dipendenti e i propri ruoli.</p>
-        <a href="funzionalita.html" class="feature-card-link">Scopri di piu</a>
+        <div class="feature-icon feature-icon-sage">&#128241;</div>
+        <h3>Un'app per il tuo team</h3>
+        <p>Ognuno vede i propri turni dal telefono e può timbrare entrata e uscita. Funziona dal browser: nessuna installazione, nessun costo in più per collaboratore.</p>
       </div>
       <div class="feature-card reveal reveal-delay-2">
-        <div class="feature-icon feature-icon-orange">&#128221;</div>
-        <h3>Documentale HR</h3>
-        <p>Carica e condividi buste paga, contratti e comunicazioni. Ogni dipendente accede solo ai propri documenti, con notifica automatica.</p>
-        <a href="funzionalita.html" class="feature-card-link">Scopri di piu</a>
-      </div>
-      <div class="feature-card reveal reveal-delay-3">
-        <div class="feature-icon feature-icon-cream">&#127979;</div>
-        <h3>Ruoli personalizzabili</h3>
-        <p>Definisci cosa puo vedere e fare ogni membro del team. Dal responsabile HR all'operatore di magazzino, con permessi granulari per area.</p>
-        <a href="funzionalita.html" class="feature-card-link">Scopri di piu</a>
+        <div class="feature-icon feature-icon-orange">&#9201;</div>
+        <h3>Presenze sotto controllo</h3>
+        <p>Timbratura da smartphone inclusa. Con il piano Pro ottieni anche la verifica di posizione (geofencing), la gestione delle anomalie e i report presenze.<span class="tag tag-pink feature-pro">Pro</span></p>
       </div>
     </div>
+    <p class="features-note reveal">Con il piano Pro, quando l'attività cresce: più sedi, documenti HR e buste paga sul telefono dei dipendenti, ruoli personalizzabili e gestione magazzino.</p>
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
+<!-- HOW -->
 <section class="section how">
   <div class="container">
-    <div class="how-grid">
-      <div class="how-header reveal">
-        <div class="eyebrow">Come funziona</div>
-        <h2 class="display-md">Operativo in meno di un'ora</h2>
-        <p style="margin-top:1rem">Non serve una lunga fase di onboarding. Turnis e progettato per essere configurato rapidamente e usato subito, anche da chi non e un esperto di software HR.</p>
-        <a href="inizia.html" class="btn btn-cream btn-md" style="margin-top:2.5rem">Inizia gratis</a>
+    <div class="sec-head reveal">
+      <span class="eyebrow">Come funziona</span>
+      <h2 class="display-md">Da zero al primo turno, senza corsi né manuali</h2>
+      <p class="lead">Una configurazione guidata ti accompagna passo dopo passo, anche se non sei pratico di software.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal reveal-delay-1">
+        <div class="step-num">01</div>
+        <h3>Lasci la tua email</h3>
+        <p>Ti scriviamo subito per confermare e ti aiutiamo ad aprire il tuo account gratuito.</p>
       </div>
-      <div class="steps reveal">
-        <div class="step">
-          <div class="step-num">01</div>
-          <div class="step-content">
-            <h3>Registra la tua azienda</h3>
-            <p>Inserisci i dati aziendali, crea il tuo account e accedi al pannello di gestione. Il sistema prepara in automatico la sede principale e il ruolo di responsabile.</p>
-            <span class="step-tag">Meno di 5 minuti</span>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">02</div>
-          <div class="step-content">
-            <h3>Configura filiali, reparti e mansioni</h3>
-            <p>Definisci la struttura della tua organizzazione: quante sedi, quali reparti, le mansioni richieste su ogni turno. Un wizard guidato ti porta passo per passo.</p>
-            <span class="step-tag">Configurazione guidata</span>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">03</div>
-          <div class="step-content">
-            <h3>Aggiungi i tuoi dipendenti</h3>
-            <p>Carica l'elenco del personale, assegna ruoli e filiali. I dipendenti ricevono le credenziali e accedono subito alla propria app per consultare turni e timbrate.</p>
-            <span class="step-tag">Inviti automatici</span>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">04</div>
-          <div class="step-content">
-            <h3>Pianifica e pubblica i turni</h3>
-            <p>Crea i turni dal calendario, assegna le risorse, verifica la copertura delle mansioni. Pubblica con un clic: i dipendenti vengono notificati in tempo reale.</p>
-            <span class="step-tag">Notifiche in tempo reale</span>
-          </div>
-        </div>
+      <div class="step reveal reveal-delay-2">
+        <div class="step-num">02</div>
+        <h3>Aggiungi il tuo team</h3>
+        <p>Inserisci i collaboratori: ricevono le credenziali e accedono alla loro app.</p>
+      </div>
+      <div class="step reveal reveal-delay-3">
+        <div class="step-num">03</div>
+        <h3>Pubblica i turni</h3>
+        <p>Crei il calendario, pubblichi con un clic e tutti vengono avvisati in tempo reale.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ROLES -->
-<section class="section roles">
+<!-- PRICING -->
+<section class="section">
   <div class="container">
-    <div class="roles-header reveal">
-      <div class="eyebrow">Due app, un unico ecosistema</div>
-      <h2 class="display-md" style="margin-top:0.8rem">Progettata per chi gestisce<br><em class="serif">e per chi lavora</em></h2>
+    <div class="sec-head reveal">
+      <span class="eyebrow">Prezzi</span>
+      <h2 class="display-md">Inizi gratis. Paghi solo se cresci.</h2>
+      <p class="lead">Nessun contratto, nessuna penale: puoi cambiare piano quando vuoi.</p>
     </div>
-    <div class="roles-grid">
-      <div class="role-card role-card-merchant reveal reveal-delay-1">
-        <div class="role-tag"><span class="tag tag-navy">Responsabili e HR</span></div>
-        <h3 class="role-title">Il pannello di gestione</h3>
-        <p class="role-desc">Tutto il controllo operativo in un'unica interfaccia. Pianifica, monitora, approva e analizza senza dover cambiare strumento.</p>
-        <ul class="role-features">
-          <li>Calendario turni con copia settimana e rilevamento conflitti</li>
-          <li>Gestione multi-filiale e multi-reparto</li>
-          <li>Approvazione richieste ferie, permessi e cambi turno</li>
-          <li>Report presenze e anomalie di timbratura</li>
-          <li>Caricamento documenti HR per ogni dipendente</li>
-          <li>Mansioni e copertura: sempre sotto controllo</li>
+    <div class="pricing-grid">
+      <div class="pricing-card reveal reveal-delay-1">
+        <span class="pricing-badge">Gratis per sempre</span>
+        <div class="pricing-name">Starter</div>
+        <p class="pricing-desc">Per piccole attività che vogliono mettere ordine nei turni senza spendere nulla.</p>
+        <div class="pricing-amount"><span class="pricing-currency">€</span>0</div>
+        <div class="pricing-period">nessuna carta di credito</div>
+        <a href="#inizia" class="btn btn-secondary btn-md" style="width:100%;justify-content:center">Inizia gratis</a>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li>Fino a 10 dipendenti</li>
+          <li>1 filiale</li>
+          <li>Pianificazione turni</li>
+          <li>App dipendente inclusa</li>
+          <li>Ferie, permessi e cambi turno</li>
+          <li>Timbratura base</li>
         </ul>
-        <a href="https://gestione.turnis.it" class="btn btn-primary btn-md" target="_blank">Accedi al pannello</a>
       </div>
-      <div class="role-card role-card-employee reveal reveal-delay-2">
-        <div class="role-tag"><span class="tag" style="background:rgba(242,231,221,0.1);color:rgba(242,231,221,0.7)">Dipendenti</span></div>
-        <h3 class="role-title" style="color:var(--cream)">L'app del dipendente</h3>
-        <p class="role-desc">I tuoi collaboratori hanno tutto quello che serve a portata di mano, senza bisogno di chiamare l'ufficio HR ogni volta.</p>
-        <ul class="role-features">
-          <li>Calendario personale con turni assegnati</li>
-          <li>Timbratura con verifica geofencing</li>
-          <li>Invio richieste ferie, permessi e cambi turno</li>
-          <li>Giustificazione anomalie di timbratura</li>
-          <li>Download documenti HR personali</li>
-          <li>Notifiche in tempo reale su ogni aggiornamento</li>
+      <div class="pricing-card pricing-card-featured reveal reveal-delay-2">
+        <span class="pricing-badge pricing-badge-featured">Quando cresci</span>
+        <div class="pricing-name">Pro</div>
+        <p class="pricing-desc">Per team in crescita che gestiscono più sedi e vogliono tutti gli strumenti.</p>
+        <div class="pricing-amount"><span class="pricing-currency">€</span>4<span class="pricing-unit">/dip</span></div>
+        <div class="pricing-period">al mese · IVA esclusa</div>
+        <a href="#inizia" class="btn btn-cream btn-md" style="width:100%;justify-content:center">Inizia gratis</a>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li>Tutto lo Starter</li>
+          <li>Dipendenti e filiali illimitati</li>
+          <li>Geofencing e gestione anomalie</li>
+          <li>Documenti HR e buste paga</li>
+          <li>Report presenze</li>
+          <li>Ruoli personalizzabili e magazzino</li>
+          <li>Supporto prioritario</li>
         </ul>
-        <a href="https://mio.turnis.it" class="btn btn-cream btn-md" target="_blank">Accedi all'app</a>
+      </div>
+      <div class="pricing-card reveal reveal-delay-3">
+        <span class="pricing-badge">Su misura</span>
+        <div class="pricing-name">Enterprise</div>
+        <p class="pricing-desc">Per organizzazioni con esigenze di integrazione, sicurezza o contratto specifiche.</p>
+        <div class="pricing-amount" style="font-size:2rem">Parliamone</div>
+        <div class="pricing-period">prezzo in base alle esigenze</div>
+        <a href="#inizia" class="btn btn-secondary btn-md" style="width:100%;justify-content:center">Contattaci</a>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li>Tutto il piano Pro</li>
+          <li>Onboarding dedicato</li>
+          <li>Integrazioni personalizzate</li>
+          <li>SLA garantito</li>
+          <li>Formazione del team</li>
+        </ul>
       </div>
     </div>
+    <p class="pricing-foot reveal">L'app dipendente è inclusa in tutti i piani, senza costi aggiuntivi per collaboratore.</p>
   </div>
 </section>
 
-<!-- STATS -->
-<section class="section stats">
+<!-- FAQ -->
+<section class="section faq">
   <div class="container">
-    <div class="stats-grid reveal">
-      <div class="stat-cell">
-        <div class="stat-number" data-count="30" data-suffix="%">0%</div>
-        <div class="stat-label">Meno tempo speso<br>nella pianificazione settimanale</div>
+    <div class="sec-head reveal">
+      <span class="eyebrow">Domande frequenti</span>
+      <h2 class="display-md">Hai ancora un dubbio?</h2>
+    </div>
+    <div class="accordion reveal">
+      <div class="accordion-item">
+        <button class="accordion-trigger" type="button">Turnis è davvero gratis?<span class="accordion-arrow">+</span></button>
+        <div class="accordion-body"><div class="accordion-body-inner">Sì. Il piano Starter è gratuito per sempre fino a 10 dipendenti e 1 filiale, senza scadenza e senza carta di credito. Se cresci, puoi passare al piano Pro (€4 per dipendente al mese, IVA esclusa) quando vuoi, senza penali.</div></div>
       </div>
-      <div class="stat-cell">
-        <div class="stat-number" data-count="0" data-suffix="">0</div>
-        <div class="stat-label">Errori nei turni quando<br>le mansioni sono configurate</div>
+      <div class="accordion-item">
+        <button class="accordion-trigger" type="button">I miei dipendenti devono installare qualcosa?<span class="accordion-arrow">+</span></button>
+        <div class="accordion-body"><div class="accordion-body-inner">No. L'app dipendente funziona da browser su qualsiasi smartphone o computer. Ricevono le credenziali e accedono subito, senza installare nulla e senza costi aggiuntivi.</div></div>
       </div>
-      <div class="stat-cell">
-        <div class="stat-number" data-count="5" data-suffix=" min">0 min</div>
-        <div class="stat-label">Per essere operativi<br>dalla registrazione</div>
+      <div class="accordion-item">
+        <button class="accordion-trigger" type="button">Devo essere esperto di software per usarlo?<span class="accordion-arrow">+</span></button>
+        <div class="accordion-body"><div class="accordion-body-inner">No. La configurazione è guidata passo per passo e i turni si creano con un wizard in tre passi. Se hai bisogno di una mano, ti aiutiamo noi.</div></div>
       </div>
-      <div class="stat-cell">
-        <div class="stat-number" data-count="100" data-suffix="%">0%</div>
-        <div class="stat-label">Delle richieste gestite<br>direttamente dalla piattaforma</div>
+      <div class="accordion-item">
+        <button class="accordion-trigger" type="button">Cosa succede dopo aver lasciato la mia email?<span class="accordion-arrow">+</span></button>
+        <div class="accordion-body"><div class="accordion-body-inner">Ricevi subito una email di conferma e il nostro team ti ricontatta per aiutarti a iniziare. Nessun impegno e nessuno spam.</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA BANNER -->
-<section class="section-sm" style="background:var(--peach)">
-  <div class="cta-banner reveal">
-    <div class="cta-banner-text">
-      <span class="eyebrow" style="color:rgba(242,231,221,0.4)">Inizia oggi</span>
-      <h2 class="display-md">Pronto a smettere<br>di gestire i turni<br><em class="serif">a mano?</em></h2>
-      <p>Registra la tua azienda, configura le filiali e pubblica il primo turno. Nessuna carta di credito, nessun impegno.</p>
-    </div>
-    <div class="cta-banner-actions">
-      <a href="inizia.html" class="btn btn-cream btn-lg">Inizia gratis</a>
-      <a href="funzionalita.html" class="btn btn-ghost btn-md" style="color:rgba(242,231,221,0.5)">Vedi tutte le funzionalita</a>
-    </div>
+<!-- FINAL CTA -->
+<section class="final" id="inizia">
+  <div class="final-card reveal">
+    <span class="eyebrow">Inizia oggi</span>
+    <h2 class="display-md">Il prossimo turno,<br><em class="serif" style="color:var(--pink)">senza stress.</em></h2>
+    <p class="lead">Lascia la tua email: ti scriviamo subito e ti aiutiamo a partire. Gratis, senza carta di credito.</p>
+    <form class="signup" data-signup novalidate>
+      <div class="signup-row">
+        <input class="signup-input" type="email" name="email" placeholder="La tua email" autocomplete="email" aria-label="Il tuo indirizzo email" required>
+        <button type="submit" class="btn btn-cream btn-md signup-btn">Voglio iniziare gratis</button>
+      </div>
+      <label class="signup-consent">
+        <input type="checkbox" name="consent" required>
+        <span>Acconsento al trattamento della mia email per ricevere informazioni su Turnis. <a href="#" data-privacy>Privacy Policy</a></span>
+      </label>
+      <input class="signup-hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <p class="signup-msg" role="alert"></p>
+      <div class="signup-done" role="status" style="background:rgba(242,231,221,0.1);color:var(--cream)">
+        <span class="signup-done-icon">&#10003;</span>
+        <div><strong>Perfetto, controlla la tua casella.</strong>Ti abbiamo scritto una email di conferma. Se non la trovi, guarda anche nello spam: ti ricontatteremo a breve.</div>
+      </div>
+    </form>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <a href="index.html" class="footer-logo">Turnis</a>
-        <p class="footer-tagline">La piattaforma per la gestione di turni, presenze e dipendenti. Semplice, rapida, affidabile.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Prodotto</h4>
-        <ul>
-          <li><a href="funzionalita.html">Funzionalita</a></li>
-          <li><a href="prezzi.html">Prezzi</a></li>
-          <li><a href="https://gestione.turnis.it" target="_blank">App gestione</a></li>
-          <li><a href="https://mio.turnis.it" target="_blank">App dipendenti</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Azienda</h4>
-        <ul>
-          <li><a href="inizia.html">Registrati</a></li>
-          <li><a href="inizia.html#contatti">Contatti</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Accesso rapido</h4>
-        <ul>
-          <li><a href="https://gestione.turnis.it" target="_blank">Accedi come azienda</a></li>
-          <li><a href="https://mio.turnis.it" target="_blank">Accedi come dipendente</a></li>
-          <li><a href="inizia.html">Nuova registrazione</a></li>
-        </ul>
-      </div>
+</main>
+
+<footer class="foot">
+  <div class="foot-inner">
+    <span class="foot-brand">Turnis</span>
+    <div class="foot-links">
+      <a href="https://gestione.turnis.it" target="_blank" rel="noopener">Accedi come azienda</a>
+      <a href="https://mio.turnis.it" target="_blank" rel="noopener">Accedi come dipendente</a>
+      <a href="mailto:ciao@turnis.it">ciao@turnis.it</a>
+      <a href="#" data-privacy>Privacy Policy</a>
     </div>
-    <div class="footer-bottom">
-      <span class="footer-copy">© 2026 Turnis. Tutti i diritti riservati.</span>
-      <div class="footer-legal">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Termini di servizio</a>
-      </div>
-    </div>
+    <span class="foot-copy">© 2026 Turnis. Tutti i diritti riservati.</span>
   </div>
 </footer>
 
