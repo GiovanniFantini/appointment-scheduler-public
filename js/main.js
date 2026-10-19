@@ -8,7 +8,7 @@
 // L'email automatica di conferma va configurata lato servizio.
 // Se vuoto, il form ripiega su un mailto verso CONTACT_EMAIL.
 const SIGNUP_ENDPOINT = '';
-const CONTACT_EMAIL = 'ciao@turnis.it';
+const CONTACT_EMAIL = 'welcome@turnis.it';
 // URL della privacy policy (se vuoto il link resta inattivo).
 const PRIVACY_URL = '';
 
@@ -77,8 +77,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Nessun endpoint configurato: fallback su mailto.
       if (!SIGNUP_ENDPOINT) {
-        const subject = encodeURIComponent('Richiesta informazioni Turnis');
-        const body = encodeURIComponent('Ciao, vorrei iniziare con Turnis. La mia email: ' + email);
+        const subject = encodeURIComponent('Onboarding Turnis');
+        const body = encodeURIComponent([
+          'Buongiorno Team Turnis,',
+          'desidero esser ricontattato per esprimere il mio interesse a entrare a far parte della realtà di Turnis.',
+          "Nella gestione dei team di lavoro, l'organizzazione dei turni rappresenta spesso una delle attività più complesse e dispendiose in termini di tempo. Sono interessato a scoprire la vostra soluzioni e i vantaggi di cui potrei trarre.",
+          'Grazie e a presto.'
+        ].join('\r\n'));
         window.location.href = 'mailto:' + CONTACT_EMAIL + '?subject=' + subject + '&body=' + body;
         return;
       }
